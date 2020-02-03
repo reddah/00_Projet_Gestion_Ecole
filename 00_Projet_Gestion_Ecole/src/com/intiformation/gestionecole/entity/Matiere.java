@@ -1,5 +1,6 @@
 package com.intiformation.gestionecole.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @Entity(name = "matiere")
 @Table(name = "matieres")
 @NamedQuery(name = "Matiere_getAll", query = "SELECT mat FROM matiere mat")
-public class Matiere {
+public class Matiere implements Serializable  {
 	/*===================Props =====================*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

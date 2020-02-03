@@ -91,7 +91,7 @@ public class CoursDaoImpl implements IGestionDao<Cours>{
 			// 4. modif de du cours
 			coursUpdate.setLibelle(pCours.getLibelle());
 			coursUpdate.setDate(pCours.getDate());
-			coursUpdate.setduree(pCours.getduree());
+			coursUpdate.setDuree(pCours.getDuree());
 			coursUpdate.setDescription(pCours.getDescription());
 
 			// 5. modif de du cours dans la bdd via la méthode update()

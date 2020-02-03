@@ -32,7 +32,7 @@ public class AppTestCours {
 		
 		System.out.println("Get by id ++++++++++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("\t > Email : " + coursDao.getById(1).getLibelle());
-		System.out.println("\t > Mot de passe : " + coursDao.getById(1).getduree());
+		System.out.println("\t > Mot de passe : " + coursDao.getById(1).getDuree());
 		System.out.println("\t > Nom : " + coursDao.getById(1).getDescription());
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 		

@@ -12,7 +12,7 @@ public class AppTestEtudiantCours {
 		/*==============================================================*/
 		
 		// etudiantCours à ajouter
-		EtudiantCours etudiantCours = new EtudiantCours(true,"Motif1","cours","etudiant");
+		EtudiantCours etudiantCours = new EtudiantCours(true,"Motif1");
 		System.out.println("Main AppTestEtudiantCours : 2");
 
 		// DAO
@@ -50,7 +50,7 @@ public class AppTestEtudiantCours {
 		/* ============================================================== */
 		
 		System.out.println("UPDATE +++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		etudiantCours = new EtudiantCours(true,"Motif1","cours","etudiant");
+		etudiantCours = new EtudiantCours(true,"Motif1");
 		etudiantCoursDao.modifier(1, etudiantCours);
 		System.out.println("\t > Aprés update : ");
 		EtudiantCours etudiantCours1 = etudiantCoursDao.getById(1);

@@ -2,25 +2,26 @@ package com.intiformation.gestionecole.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name = "cours")
 @Table(name = "cours")
-@NamedQuery(name = "cours_getAll", query = "SELECT c FROM cours c")
-public class Cours implements Serializable{
+@NamedQuery(name = "Cours_getAll", query = "SELECT c FROM cours c")
+public class Cours implements Serializable {
 
-	/*===================Props =====================*/
+	/* ===================Props ===================== */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_Cours")
@@ -30,14 +31,11 @@ public class Cours implements Serializable{
 	private Date date;
 	private String duree;
 	private String description;
-	
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "ETUDIANT-COURS_ID", referencedColumnName = "id_EtudiantCours")
-	private EtudiantCours etudiantCours;
-	
-	/*===================Ctors=====================*/
+
+	@OneToMany(mappedBy = "cours", targetEntity = EtudiantCours.class, cascade = CascadeType.ALL)
+	private List<Cours> listeCours;
+
+	/* ===================Ctors===================== */
 	public Cours() {
 		super();
 	}
@@ -48,7 +46,7 @@ public class Cours implements Serializable{
 		this.duree = duree;
 		this.description = description;
 	}
-	
+
 	public Cours(int idCours, String libelle, String duree, String description) {
 		super();
 		this.idCours = idCours;
@@ -56,24 +54,19 @@ public class Cours implements Serializable{
 		this.duree = duree;
 		this.description = description;
 	}
-	
+
 	public Cours(Date date) {
 		super();
 		this.date = date;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Cours [libelle=" + libelle + ", date=" + date + ", duree=" + duree + ", description=" + description
 				+ "]";
 	}
 
-	/*==================getters/setters===================*/
-	
-	public String getLibelle() {
-		return libelle;
-	}
+	/* ==================getters/setters=================== */
 
 	public int getIdCours() {
 		return idCours;
@@ -81,6 +74,10 @@ public class Cours implements Serializable{
 
 	public void setIdCours(int idCours) {
 		this.idCours = idCours;
+	}
+
+	public String getLibelle() {
+		return libelle;
 	}
 
 	public void setLibelle(String libelle) {
@@ -95,11 +92,11 @@ public class Cours implements Serializable{
 		this.date = date;
 	}
 
-	public String getduree() {
+	public String getDuree() {
 		return duree;
 	}
 
-	public void setduree(String duree) {
+	public void setDuree(String duree) {
 		this.duree = duree;
 	}
 
@@ -111,6 +108,12 @@ public class Cours implements Serializable{
 		this.description = description;
 	}
 
+	public List<Cours> getListeCours() {
+		return listeCours;
+	}
 
+	public void setListeCours(List<Cours> listeCours) {
+		this.listeCours = listeCours;
+	}
 
 }// fin de la classe Cours

@@ -1,5 +1,6 @@
 package com.intiformation.gestionecole.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @Entity(name = "promotion")
 @Table(name = "promotions")
 @NamedQuery(name = "promotion_getAll", query = "SELECT promo FROM promotion promo")
-public class Promotion {
+public class Promotion implements Serializable {
 	/* ===================Props ===================== */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

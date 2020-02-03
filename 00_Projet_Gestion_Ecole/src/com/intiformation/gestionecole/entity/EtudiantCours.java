@@ -1,6 +1,6 @@
 package com.intiformation.gestionecole.entity;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,14 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "etudiantCours")
 @Table(name = "etudiantCours")
 @NamedQuery(name = "EtudiantCours_getAll", query = "SELECT etuC FROM etudiantCours etuC")
-public class EtudiantCours {
+public class EtudiantCours implements Serializable {
 	/* ===================Props ===================== */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,35 +24,22 @@ public class EtudiantCours {
 	private int idEtudiantCours;
 	private boolean absence;
 	private String motif;
-	private String cours;
-	private String etudiant;
 
-	// Amélioration pour avoir 2 tables
-	@OneToMany(mappedBy="etudiantCours",
-			   targetEntity=Cours.class, 
-			   cascade=CascadeType.ALL)
-	private List<Cours> listeCours;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "COURS_ID", referencedColumnName = "id_Cours")
+	private Cours cours;
 
-	// Amélioration pour avoir 2 tables
-	@OneToMany(mappedBy="etudiantCours",
-			   targetEntity=Etudiant.class, 
-			   cascade=CascadeType.ALL)
-	private List<Etudiant> listeEtudiant;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ETUDIANT_ID", referencedColumnName = "identifiant")
+	private Etudiant etudiant;
 
+	
 	/* ===================Ctors===================== */
 	public EtudiantCours() {
 		super();
 	}
 
-	public EtudiantCours(boolean absence, String motif, String cours, String etudiant) {
-		super();
-		this.absence = absence;
-		this.motif = motif;
-		this.cours = cours;
-		this.etudiant = etudiant;
-	}
-
-	public EtudiantCours(int idEtudiantCours, boolean absence, String motif, String cours, String etudiant) {
+	public EtudiantCours(int idEtudiantCours, boolean absence, String motif, Cours cours, Etudiant etudiant) {
 		super();
 		this.idEtudiantCours = idEtudiantCours;
 		this.absence = absence;
@@ -59,16 +47,22 @@ public class EtudiantCours {
 		this.cours = cours;
 		this.etudiant = etudiant;
 	}
-	
-	
+
+	public EtudiantCours(boolean absence, String motif) {
+		super();
+		this.absence = absence;
+		this.motif = motif;
+	}
 
 	@Override
 	public String toString() {
-		return "EtudiantCours [absence=" + absence + ", motif=" + motif + ", cours=" + cours + ", etudiant=" + etudiant
-				+ "]";
+		return "EtudiantCours [idEtudiantCours=" + idEtudiantCours + ", absence=" + absence + ", motif=" + motif
+				+ ", cours=" + cours + ", etudiant=" + etudiant + "]";
 	}
-	/* ==================getters/setters=================== */
 
+
+
+	/* ===================getters/setter===================== */
 	public int getIdEtudiantCours() {
 		return idEtudiantCours;
 	}
@@ -93,36 +87,20 @@ public class EtudiantCours {
 		this.motif = motif;
 	}
 
-	public String getCours() {
+	public Cours getCours() {
 		return cours;
 	}
 
-	public void setCours(String cours) {
+	public void setCours(Cours cours) {
 		this.cours = cours;
 	}
 
-	public String getEtudiant() {
+	public Etudiant getEtudiant() {
 		return etudiant;
 	}
 
-	public void setEtudiant(String etudiant) {
+	public void setEtudiant(Etudiant etudiant) {
 		this.etudiant = etudiant;
-	}
-
-	public List<Cours> getListeCours() {
-		return listeCours;
-	}
-
-	public void setListeCours(List<Cours> listeCours) {
-		this.listeCours = listeCours;
-	}
-
-	public List<Etudiant> getListeEtudiant() {
-		return listeEtudiant;
-	}
-
-	public void setListeEtudiant(List<Etudiant> listeEtudiant) {
-		this.listeEtudiant = listeEtudiant;
 	}
 
 	
