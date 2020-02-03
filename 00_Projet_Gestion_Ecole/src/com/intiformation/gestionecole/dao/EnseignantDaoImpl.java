@@ -21,18 +21,25 @@ public class EnseignantDaoImpl implements IGestionDao<Enseignant>{
 		/* ============================================================== */
 		@Override
 		public boolean ajouter(Enseignant aEnseignant) {
+			System.out.println("EnseignantDaoImpl : 1");
 
 			EntityTransaction transaction = null;
+			System.out.println("EnseignantDaoImpl : 2");
 			try {
+				System.out.println("EnseignantDaoImpl : 3");
 				// 1. récup de ouverture d'une transaction
 				transaction = entityManager.getTransaction();
+				System.out.println("EnseignantDaoImpl : 4");
 				transaction.begin();
+				System.out.println("EnseignantDaoImpl : 5");
 
 				// 2. ajout de l'enseignant à la bdd via la méthode persist()
 				entityManager.persist(aEnseignant);
+				System.out.println("EnseignantDaoImpl : 6");
 
 				// 3. validation de la transaction avec commit()
 				transaction.commit();
+				System.out.println("EnseignantDaoImpl : 7");
 				return true;
 			} catch (PersistenceException ex) {
 

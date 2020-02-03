@@ -1,7 +1,9 @@
 package com.intiformation.gestionecole.test;
 
 import com.intiformation.gestionecole.dao.AdministrateurDaoImpl;
+import com.intiformation.gestionecole.dao.AdresseDaoImpl;
 import com.intiformation.gestionecole.entity.Administrateur;
+import com.intiformation.gestionecole.entity.Adresse;
 
 public class AppTestAdministrateur {
 
@@ -9,9 +11,14 @@ public class AppTestAdministrateur {
 		/* ============================================================== */
 		/* =================== Ajouter Administrateur =================== */
 		/* ============================================================== */
-
+		AdresseDaoImpl adresseDaoImpl = new AdresseDaoImpl();
+		// adresse à ajouter
+		Adresse adresse = new Adresse();
+		
+		adresse = adresseDaoImpl.getById(1);
+		
 		// administrateur à ajouter
-		Administrateur administrateur = new Administrateur("mdp123", "AdminNom", "AdminPrenom", "admin@admin.com");
+		Administrateur administrateur = new Administrateur("mdp123", "AdminNom", "AdminPrenom", "admin@admin.com", adresse);
 
 		// DAO Administrateur
 		AdministrateurDaoImpl administrateurDao = new AdministrateurDaoImpl();
@@ -58,7 +65,7 @@ public class AppTestAdministrateur {
 		/* ============================================================== */
 
 		System.out.println("DELETE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-		// administrateurDao.supprimer(1);
+		// administrateurDao.supprimer(5);
 
 		/* ============================================================== */
 		/* ================== Get all Administrateur ==================== */

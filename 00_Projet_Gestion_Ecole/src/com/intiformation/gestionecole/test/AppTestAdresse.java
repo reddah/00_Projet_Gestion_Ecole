@@ -1,17 +1,12 @@
 package com.intiformation.gestionecole.test;
 
-import com.intiformation.gestionecole.dao.AdministrateurDaoImpl;
 import com.intiformation.gestionecole.dao.AdresseDaoImpl;
-import com.intiformation.gestionecole.dao.EnseignantDaoImpl;
-import com.intiformation.gestionecole.dao.EtudiantDaoImpl;
-import com.intiformation.gestionecole.entity.Administrateur;
 import com.intiformation.gestionecole.entity.Adresse;
-import com.intiformation.gestionecole.entity.Enseignant;
-import com.intiformation.gestionecole.entity.Etudiant;
 
 public class AppTestAdresse {
 
 	public static void main(String[] args) {
+		
 		/* ============================================================== */
 		/* =================== Ajouter Adresse =================== */
 		/* ============================================================== */
@@ -62,7 +57,7 @@ public class AppTestAdresse {
 		/* ============================================================== */
 
 		System.out.println("DELETE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-		// adresseDao.supprimer(1);
+		//adresseDao.supprimer(7);
 
 		/* ============================================================== */
 		/* ================== Get all Adresse ==================== */
@@ -81,71 +76,71 @@ public class AppTestAdresse {
 		/* ===================== Attribuer Adresse ====================== */
 		/* ============================================================== */
 		
-		/* A un Admin */
-		AdministrateurDaoImpl administrateurDaoImpl = new AdministrateurDaoImpl();
-		
-		Administrateur administrateur =  administrateurDaoImpl.getById(2);
-		
-		Adresse attribuerAdresseAdmin = new Adresse(administrateur);
-		
-		adresseDao.attribuerAdresse(adresseDao.getById(1).getIdAdresse(), attribuerAdresseAdmin);
-		
-		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > Rue : " + adresseDao.getById(1).getRue());
-		System.out.println("\t > Code postal : " + adresseDao.getById(1).getCodePostal());
-		System.out.println("\t > Ville : " + adresseDao.getById(1).getVille());
-		System.out.println("\t > Personne : " + adresseDao.getById(1).getAdministrateur());
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-
-		
-		/* A un Etudiant */
-		EtudiantDaoImpl etudiantDaoImpl = new EtudiantDaoImpl();
-		
-		Etudiant etudiant =  etudiantDaoImpl.getById(1);
-		
-		Adresse attribuerAdresseEtudiant = new Adresse(etudiant);
-		
-		adresseDao.attribuerAdresse(adresseDao.getById(2).getIdAdresse(), attribuerAdresseEtudiant);
-		
-		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > Rue : " + adresseDao.getById(2).getRue());
-		System.out.println("\t > Code postal : " + adresseDao.getById(2).getCodePostal());
-		System.out.println("\t > Ville : " + adresseDao.getById(2).getVille());
-		System.out.println("\t > Personne : " + adresseDao.getById(2).getEtudiant());
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-		
-		
-		/* A un Enseignant */
-		EnseignantDaoImpl enseignantDaoImpl = new EnseignantDaoImpl();
-		
-		Enseignant enseignant =  enseignantDaoImpl.getById(3);
-		
-		Adresse attribuerAdresseEnseignant = new Adresse(enseignant);
-		
-		adresseDao.attribuerAdresse(adresseDao.getById(3).getIdAdresse(), attribuerAdresseEnseignant);
-		
-		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > Rue : " + adresseDao.getById(3).getRue());
-		System.out.println("\t > Code postal : " + adresseDao.getById(3).getCodePostal());
-		System.out.println("\t > Ville : " + adresseDao.getById(3).getVille());
-		System.out.println("\t > Personne : " + adresseDao.getById(3).getEnseignant());
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-		
-		/* Générique */
-		
-		Etudiant etudiantG =  null;
-		
-		Administrateur administrateurG =  administrateurDaoImpl.getById(1);
-	
-		Enseignant enseignantG = null;
-		
-		Adresse attribuerAdresse = new Adresse(etudiantG, administrateurG, enseignantG);
-		
-		adresseDao.attribuerAdresse(adresseDao.getById(3).getIdAdresse(), attribuerAdresse);
-		
-		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > Personne : " + adresseDao.getById(3).toString());
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
+//		/* A un Admin */
+//		AdministrateurDaoImpl administrateurDaoImpl = new AdministrateurDaoImpl();
+//		
+//		Administrateur administrateur =  administrateurDaoImpl.getById(1);
+//		
+//		Adresse attribuerAdresseAdmin = new Adresse(administrateur);
+//		
+//		adresseDao.attribuerAdresse(adresseDao.getById(1).getIdAdresse(), attribuerAdresseAdmin);
+//		
+//		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
+//		System.out.println("\t > Rue : " + adresseDao.getById(1).getRue());
+//		System.out.println("\t > Code postal : " + adresseDao.getById(1).getCodePostal());
+//		System.out.println("\t > Ville : " + adresseDao.getById(1).getVille());
+//		System.out.println("\t > Personne : " + adresseDao.getById(1).getAdministrateur());
+//		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
+//
+//		
+//		/* A un Etudiant */
+//		EtudiantDaoImpl etudiantDaoImpl = new EtudiantDaoImpl();
+//		
+//		Etudiant etudiant =  etudiantDaoImpl.getById(1);
+//		
+//		Adresse attribuerAdresseEtudiant = new Adresse(etudiant);
+//		
+//		adresseDao.attribuerAdresse(adresseDao.getById(2).getIdAdresse(), attribuerAdresseEtudiant);
+//		
+//		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
+//		System.out.println("\t > Rue : " + adresseDao.getById(2).getRue());
+//		System.out.println("\t > Code postal : " + adresseDao.getById(2).getCodePostal());
+//		System.out.println("\t > Ville : " + adresseDao.getById(2).getVille());
+//		System.out.println("\t > Personne : " + adresseDao.getById(2).getEtudiant());
+//		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
+//		
+//		
+//		/* A un Enseignant */
+//		EnseignantDaoImpl enseignantDaoImpl = new EnseignantDaoImpl();
+//		
+//		Enseignant enseignant =  enseignantDaoImpl.getById(3);
+//		
+//		Adresse attribuerAdresseEnseignant = new Adresse(enseignant);
+//		
+//		adresseDao.attribuerAdresse(adresseDao.getById(3).getIdAdresse(), attribuerAdresseEnseignant);
+//		
+//		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
+//		System.out.println("\t > Rue : " + adresseDao.getById(3).getRue());
+//		System.out.println("\t > Code postal : " + adresseDao.getById(3).getCodePostal());
+//		System.out.println("\t > Ville : " + adresseDao.getById(3).getVille());
+//		System.out.println("\t > Personne : " + adresseDao.getById(3).getEnseignant());
+//		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
+//		
+//		/* Générique */
+//		
+//		Etudiant etudiantG =  null;
+//		
+//		Administrateur administrateurG =  administrateurDaoImpl.getById(4);
+//	
+//		Enseignant enseignantG = null;
+//		
+//		Adresse attribuerAdresse = new Adresse(etudiantG, administrateurG, enseignantG);
+//		
+//		adresseDao.attribuerAdresse(adresseDao.getById(10).getIdAdresse(), attribuerAdresse);
+//		
+//		System.out.println("Attribuer Adresse ++++++++++++++++++++++++++++++++++++++++++++++++++");
+//		System.out.println("\t > Personne : " + adresseDao.getById(10).toString());
+//		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 	}// Fin du main
 
 }// Fin de la classe

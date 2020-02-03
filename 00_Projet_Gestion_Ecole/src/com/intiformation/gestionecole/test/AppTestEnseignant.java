@@ -1,24 +1,35 @@
 package com.intiformation.gestionecole.test;
 
+import com.intiformation.gestionecole.dao.AdresseDaoImpl;
 import com.intiformation.gestionecole.dao.EnseignantDaoImpl;
+import com.intiformation.gestionecole.entity.Adresse;
 import com.intiformation.gestionecole.entity.Enseignant;
 
 public class AppTestEnseignant {
 
 	public static void main(String[] args) {
+		System.out.println("Main AppTestEnseignant : 1");
 
 		/*==============================================================*/
 		/*=================== Ajouter Enseignant ===================*/
 		/*==============================================================*/
+		AdresseDaoImpl adresseDaoImpl = new AdresseDaoImpl();
+		// adresse à ajouter
+		Adresse adresse = new Adresse();
+		
+		adresse = adresseDaoImpl.getById(1);
 		
 		// enseignant à ajouter
-		Enseignant enseignant = new Enseignant("mdp123","EnseignantNom","EnseignantPrenom","enseignant@enseignant.com");
+		Enseignant enseignant = new Enseignant("mdp123","EnseignantNom","EnseignantPrenom","enseignant@enseignant.com", adresse);
 
+		System.out.println("Main AppTestEnseignant : 2");
 		// DAO
 		EnseignantDaoImpl enseignantDao = new EnseignantDaoImpl();
+		System.out.println("Main AppTestEnseignant : 3");
 		
 		// Ajout
 		enseignantDao.ajouter(enseignant);
+		System.out.println("Main AppTestEnseignant : 4");
 		
 		// Affichage
 		System.out.println("Ajout des enseignants : ++++++++++++++++++++++++++++++++++++");

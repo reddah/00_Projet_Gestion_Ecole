@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,24 +28,24 @@ public class Adresse implements Serializable {
 	private String ville;
 
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ETUDIANT_ID", // Nom de la FK
-			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
-	) // gestion de la FK
-	private Etudiant etudiant;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ADMINISTRATEUR_ID", // Nom de la FK
-			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
-	) // gestion de la FK
-	private Administrateur administrateur;
-
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ENSEIGNANT_ID", // Nom de la FK
-			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
-	) // gestion de la FK
-	private Enseignant enseignant;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ETUDIANT_ID", // Nom de la FK
+//			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
+//	) // gestion de la FK
+//	private Etudiant etudiant;
+//	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ADMINISTRATEUR_ID", // Nom de la FK
+//			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
+//	) // gestion de la FK
+//	private Administrateur administrateur;
+//
+//
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ENSEIGNANT_ID", // Nom de la FK
+//			referencedColumnName = "identifiant" // Nom de la colonne de la classe associée
+//	) // gestion de la FK
+//	private Enseignant enseignant;
 	/* ____________ Ctor ____________ */
 
 	public Adresse() {
@@ -63,59 +64,11 @@ public class Adresse implements Serializable {
 		this.ville = ville;
 	}
 
-	public Adresse(int idAdresse, String rue, int codePostal, String ville, Administrateur administrateur) {
-		super();
-		this.idAdresse = idAdresse;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.administrateur = administrateur;
-	}
-
-	public Adresse(int idAdresse, String rue, int codePostal, String ville, Enseignant enseignant) {
-		super();
-		this.idAdresse = idAdresse;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.enseignant = enseignant;
-	}
-
-	public Adresse(int idAdresse, String rue, int codePostal, String ville, Etudiant etudiant) {
-		super();
-		this.idAdresse = idAdresse;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.etudiant = etudiant;
-	}
-	
-	
-
-	public Adresse(Etudiant etudiant, Administrateur administrateur, Enseignant enseignant) {
-		super();
-		this.etudiant = etudiant;
-		this.administrateur = administrateur;
-		this.enseignant = enseignant;
-	}
-
-	public Adresse(Etudiant etudiant) {
-		super();
-		this.etudiant = etudiant;
-	}
-	public Adresse( Enseignant enseignant) {
-		super();
-		this.enseignant = enseignant;
-	}
-	public Adresse(Administrateur administrateur) {
-		super();
-		this.administrateur = administrateur;
-	}
 
 	@Override
 	public String toString() {
 		return "Adresse [idAdresse=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville
-				+ ", etudiant=" + etudiant + ", administrateur=" + administrateur + ", enseignant=" + enseignant + "]";
+				+ "]";
 	}
 	
 	/* ____________ getters/setters ____________ */
@@ -153,28 +106,5 @@ public class Adresse implements Serializable {
 		this.ville = ville;
 	}
 
-	public Administrateur getAdministrateur() {
-		return administrateur;
-	}
-
-	public void setAdministrateur(Administrateur administrateur) {
-		this.administrateur = administrateur;
-	}
-
-	public Etudiant getEtudiant() {
-		return etudiant;
-	}
-
-	public void setEtudiant(Etudiant etudiant) {
-		this.etudiant = etudiant;
-	}
-
-	public Enseignant getEnseignant() {
-		return enseignant;
-	}
-
-	public void setEnseignant(Enseignant enseignant) {
-		this.enseignant = enseignant;
-	}
 
 }// Fin de la classe Adresse

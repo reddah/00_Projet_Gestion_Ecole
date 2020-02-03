@@ -7,18 +7,19 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import com.intiformation.gestionecole.entity.Adresse;
+import com.intiformation.gestionecole.entity.Promotion;
 import com.intiformation.gestionecole.tool.JpaUtil;
 
-public class AdresseDaoImpl implements IGestionDao<Adresse>{
+public class PromotionDaoImpl implements IGestionDao<Promotion> {
+
 	// 1. récup de la l'entityManager à partir de JpaUtil
 	private EntityManager entityManager = JpaUtil.getInstance();
 
 	/* ============================================================== */
-	/* ======================= Ajouter Adresse ========================= */
+	/* ======================= Ajouter Promotion ========================= */
 	/* ============================================================== */
 	@Override
-	public boolean ajouter(Adresse aAdresse) {
+	public boolean ajouter(Promotion aPromotion) {
 
 		EntityTransaction transaction = null;
 		try {
@@ -26,8 +27,8 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 			transaction = entityManager.getTransaction();
 			transaction.begin();
 
-			// 2. ajout de l'adresse à la bdd via la méthode persist()
-			entityManager.persist(aAdresse);
+			// 2. ajout de la promotion à la bdd via la méthode persist()
+			entityManager.persist(aPromotion);
 
 			// 3. validation de la transaction avec commit()
 			transaction.commit();
@@ -45,21 +46,22 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 
 		} // fin du catch
 		return false;
-	}// fin de la méthode ajouterAdresse()
+	}// fin de la méthode ajouterPromotion()
 
 	/* ============================================================== */
-	/* ===================== Get By IdAdresse ====================== */
+	/* ======================= Get By IdPromotion ======================== */
 	/* ============================================================== */
 	@Override
-	public Adresse getById(int pIdAdresse) {
+	public Promotion getById(int pIdPromotion) {
 
-		Adresse adresse = null;
+		Promotion promotion = null;
 
 		try {
-			// 2. récup de l'adresse à la bdd via la méthode find()
-			adresse = entityManager.find(Adresse.class, pIdAdresse);
+			// 1. récup de l'enseignant à la bdd via la méthode find()
+			promotion = entityManager.find(Promotion.class, pIdPromotion);
 
-			return adresse;
+			return promotion;
+
 		} catch (PersistenceException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -68,48 +70,54 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 		} // end finally
 
 		return null;
-	}// end getAdresseById()
+	}// end getPromotionById()
 
 	/* ============================================================== */
-	/* ===================== Modifier Adresse ====================== */
+	/* ======================= Modifier Promotion ======================== */
 	/* ============================================================== */
 	@Override
-	public boolean modifier(int pIdAdresse, Adresse pAdresse) {
+	public boolean modifier(int pIdPromotion, Promotion pPromotion) {
+
 		EntityTransaction transaction = null;
+
 		try {
 			// 1. ouverture d'une transaction via l'entityManager
 			transaction = entityManager.getTransaction();
 			transaction.begin();
-			// 3. récup de l'adresse à modifier
-			Adresse adresseUpdate = getById(pIdAdresse);
-			// 4. modif de l'adresse
 
-			adresseUpdate.setRue(pAdresse.getRue());
-			adresseUpdate.setCodePostal(pAdresse.getCodePostal());
-			adresseUpdate.setVille(pAdresse.getVille());
-			// 5. modif de l'adresse dans la bdd via la méthode update()
-			entityManager.merge(adresseUpdate);
+			// 3. récup de la promotion à modifier
+			Promotion promotionUpdate = getById(pIdPromotion);
+
+			// 4. modif de la promotion
+			promotionUpdate.setLibelle(pPromotion.getLibelle());
+
+			// 5. modif de la promotion dans la bdd via la méthode update()
+			entityManager.merge(promotionUpdate);
+
 			// 6. validation de la transaction avec commit()
 			transaction.commit();
+
 			return true;
 		} catch (PersistenceException ex) {
+
 			if (transaction != null) {
 				// 7. annulation de la transaction
 				transaction.rollback();
 				ex.printStackTrace();
 			}
+
 		} finally {
 			// 8. fermeture de l'entityManager
 			// entityManager.close();
 		} // end finally
 		return false;
-	}// end modifierAdresse
+	}// end modifierPromotion
 
 	/* ============================================================== */
-	/* ==================== Supprimer Adresse ====================== */
+	/* ======================= Supprimer Promotion ======================= */
 	/* ============================================================== */
 	@Override
-	public boolean supprimer(int pIdAdresse) {
+	public boolean supprimer(int pIdPromotion) {
 
 		EntityTransaction transaction = null;
 
@@ -117,12 +125,12 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 			// 2. ouverture d'une transaction via l'entityManager
 			transaction = entityManager.getTransaction();
 			transaction.begin();
-			// 3. récup de l'adresse à modifier
-			Adresse adresseSupp = getById(pIdAdresse);
+			// 3. récup de la promotion à modifier
+			Promotion promotionSupp = getById(pIdPromotion);
 
-			// 4. modif de l'adresse dans la bdd via la méthode remove() de
+			// 4. modif de la promotion dans la bdd via la méthode remove() de
 			// l'entityManager
-			entityManager.remove(adresseSupp);
+			entityManager.remove(promotionSupp);
 
 			// 5. validation de la transaction avec commit()
 			transaction.commit();
@@ -141,22 +149,22 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 			// entityManager.close();
 		} // end finally
 		return false;
-	}// end supprimerAdresse
+	}// end supprimerPromotion
 
 	/* ============================================================== */
-	/* ===================== Get all Adresse ======================= */
+	/* ======================== Get all Promotion ======================== */
 	/* ============================================================== */
 	@Override
-	public List<Adresse> getAll() {
+	public List<Promotion> getAll() {
 
-		List<Adresse> listeAllAdresses = null;
+		List<Promotion> listeAllPromotions = null;
 
 		try {
-			Query getAllAdresseQuery = entityManager.createNamedQuery("Adresse_getAll");
+			Query getAllPromotionQuery = entityManager.createNamedQuery("Promotion_getAll");
 
-			listeAllAdresses = getAllAdresseQuery.getResultList();
+			listeAllPromotions = getAllPromotionQuery.getResultList();
 
-			return listeAllAdresses;
+			return listeAllPromotions;
 
 		} catch (PersistenceException ex) {
 			ex.printStackTrace();
@@ -166,42 +174,6 @@ public class AdresseDaoImpl implements IGestionDao<Adresse>{
 		} // end finally
 		return null;
 
-	}// Fin de la méthode getAllAdresse
-	
-	/* ============================================================== */
-	/* ===================== Attribuer Adresse ====================== */
-	/* ============================================================== */
+	}// Fin de la méthode getAllPromotion
 
-//	public boolean attribuerAdresse (int pIdAdresse, Adresse pAdresse) {
-//		EntityTransaction transaction = null;
-//		try {
-//			// 1. ouverture d'une transaction via l'entityManager
-//			transaction = entityManager.getTransaction();
-//			transaction.begin();
-//			// 3. récup de l'adresse à modifier
-//			Adresse adresseUpdate = getById(pIdAdresse);
-//			// 4. modif de l'adresse
-//
-//			adresseUpdate.setAdministrateur(pAdresse.getAdministrateur());
-//			adresseUpdate.setEnseignant(pAdresse.getEnseignant());
-//			adresseUpdate.setEtudiant(pAdresse.getEtudiant());
-//			// 5. modif de l'adresse dans la bdd via la méthode update()
-//			entityManager.merge(adresseUpdate);
-//			// 6. validation de la transaction avec commit()
-//			transaction.commit();
-//			return true;
-//		} catch (PersistenceException ex) {
-//			if (transaction != null) {
-//				// 7. annulation de la transaction
-//				transaction.rollback();
-//				ex.printStackTrace();
-//			}
-//		} finally {
-//			// 8. fermeture de l'entityManager
-//			// entityManager.close();
-//		} // end finally
-//		return false;
-//	}// end modifierAdresse
-	
-	
-}// Fin de la classe AdresseDaoImpl
+}// Fin de la classe PromotionDao

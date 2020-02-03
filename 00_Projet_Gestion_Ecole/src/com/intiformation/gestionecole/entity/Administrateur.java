@@ -35,6 +35,14 @@ public class Administrateur extends Personne implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Administrateur(String motDePasse, String nom, String prenom, String email, Adresse adresse) {
+		super(motDePasse, nom, prenom, email, adresse);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 
 	/* ____________ getters/setters ____________ */
 

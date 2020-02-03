@@ -2,13 +2,19 @@ package com.intiformation.gestionecole.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne implements Serializable {
 	/* ____________ Props ____________ */
 	@Id
@@ -18,6 +24,13 @@ public abstract class Personne implements Serializable {
 	protected String nom;
 	protected String prenom;
 	protected String email;
+
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ADRESSE_ID", // Nom de la FK
+			referencedColumnName = "id_Adresse" // Nom de la colonne de la classe associée
+	) // gestion de la FK
+	private Adresse adresse;
 
 	/* ____________ Ctor ____________ */
 
@@ -46,14 +59,22 @@ public abstract class Personne implements Serializable {
 		this.prenom = prenom;
 		this.email = email;
 	}
+	
+	public Personne(String motDePasse, String nom, String prenom, String email, Adresse adresse) {
+		super();
+		this.motDePasse = motDePasse;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Personne [identifiant=" + identifiant + ", motDePasse=" + motDePasse + ", nom=" + nom + ", prenom="
-				+ prenom + ", email=" + email + "]";
+				+ prenom + ", email=" + email + ", adresse=" + adresse + "]";
 	}
-	
-	
 
 	/* ____________ getters/setters ____________ */
 
@@ -96,5 +117,5 @@ public abstract class Personne implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }// Fin de la classe Personne

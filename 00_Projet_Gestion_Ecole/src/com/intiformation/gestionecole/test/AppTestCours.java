@@ -1,74 +1,73 @@
 package com.intiformation.gestionecole.test;
 
-import com.intiformation.gestionecole.dao.EtudiantDaoImpl;
-import com.intiformation.gestionecole.entity.Etudiant;
+import com.intiformation.gestionecole.dao.CoursDaoImpl;
+import com.intiformation.gestionecole.entity.Cours;
 
-public class AppTestEtudiant {
+public class AppTestCours {
 
 	public static void main(String[] args) {
 
 		/*==============================================================*/
-		/*=================== Ajouter Etudiant ===================*/
+		/*=================== Ajouter Cours ===================*/
 		/*==============================================================*/
 		
-		// etudiant à ajouter
-		Etudiant etudiant = new Etudiant("mdp123","Etudiant1Nom","Etudian1Prenom","etudiant1@etudiant.com","urlPhoto1");
-
+		// cours à ajouter
+		Cours cours = new Cours("Matiere 1", "2h", "1Test" );
+		
 		// DAO
-		EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
+		CoursDaoImpl coursDao = new CoursDaoImpl();
 		
 		// Ajout
-		etudiantDao.ajouter(etudiant);
+		coursDao.ajouter(cours);
 		
 		// Affichage
-		System.out.println("Ajout des etudiants : ++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > " + etudiant);
+		System.out.println("Ajout des courss : ++++++++++++++++++++++++++++++++++++");
+		System.out.println("\t > " + cours);
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 		
 		
 		/* ============================================================== */
-		/* ================== Get By IdEtudiant =================== */
+		/* ================== Get By IdCours =================== */
 		/* ============================================================== */
 		
 		System.out.println("Get by id ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > Email : " + etudiantDao.getById(1).getEmail());
-		System.out.println("\t > Mot de passe : " + etudiantDao.getById(1).getMotDePasse());
-		System.out.println("\t > Nom : " + etudiantDao.getById(1).getNom());
-		System.out.println("\t > Prenom : " + etudiantDao.getById(1).getPrenom());
+		System.out.println("\t > Email : " + coursDao.getById(1).getLibelle());
+		System.out.println("\t > Mot de passe : " + coursDao.getById(1).getduree());
+		System.out.println("\t > Nom : " + coursDao.getById(1).getDescription());
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 		
 		System.out.println("Get by id toString ++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("\t > " + etudiant.toString());
+		System.out.println("\t > " + cours.toString());
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 		
 		
 		/* ============================================================== */
-		/* ================= Modifier Etudiant ==================== */
+		/* ================= Modifier Cours ==================== */
 		/* ============================================================== */
 		
 		System.out.println("UPDATE +++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		etudiant = new Etudiant("mdp123","Etudiant250Nom","Etudian250Prenom","etudiant1@etudiant.com","urlPhoto250");
-		etudiantDao.modifier(3, etudiant);
+		cours = new Cours("Matiere 1", "2h", "1Test" );
+		coursDao.modifier(3, cours);
 		System.out.println("\t > Aprés update : ");
-		Etudiant etudiant1 = etudiantDao.getById(3);
-		System.out.println("\t\t > id = : " + etudiant1.toString());
+		Cours cours1 = coursDao.getById(3);
+		System.out.println("\t\t > id = : " + cours1.toString());
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
 		
 		/* ============================================================== */
-		/* ================== Supprimer Etudiant ================== */
+		/* ================== Supprimer Cours ================== */
 		/* ============================================================== */
 		
 		System.out.println("DELETE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-		//etudiantDao.supprimer(2);
+		//coursDao.supprimer(2);
 		
 		
 		/* ============================================================== */
-		/* ================== Get all Etudiant ==================== */
+		/* ================== Get all Cours ==================== */
 		/* ============================================================== */
 		
-		System.out.println("Get All Etudiants ===================================");	
-		for (Etudiant etudiant2 : etudiantDao.getAll()) {
-			System.out.println("\t > " + etudiant2.toString());
+		System.out.println("Get All Courss ===================================");	
+		for (Cours cours2 : coursDao.getAll()) {
+			System.out.println("\t > " + cours2.toString());
 		}
 		
 		System.out.println("===================================================================\n");

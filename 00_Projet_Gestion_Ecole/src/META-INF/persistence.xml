@@ -19,6 +19,10 @@
 			<class>com.intiformation.gestionecole.entity.Etudiant</class>
 			<class>com.intiformation.gestionecole.entity.Enseignant</class>
 			<class>com.intiformation.gestionecole.entity.Adresse</class>
+			<class>com.intiformation.gestionecole.entity.Cours</class>
+			<class>com.intiformation.gestionecole.entity.Promotion</class>
+			<class>com.intiformation.gestionecole.entity.Matiere</class>
+			<class>com.intiformation.gestionecole.entity.EtudiantCours</class>
 			
 		<!-- ==================================================== -->
 		<!-- === Définition des propriétés JPA pour la config === -->
