@@ -7,8 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,12 +26,23 @@ public class Etudiant extends Personne implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_de_naissance")
 	private Date dateNaissance;
-	
-	
+
+	/* ------------------------------------------------- */
+	/* ----------------- Association ------------------- */
+	/* ------------------------------------------------- */
+	/**
+	 * > type de la relation : One Etudiant To Many EtudiantCours
+	 */
+
 	@OneToMany(mappedBy = "etudiant", targetEntity = EtudiantCours.class, cascade = CascadeType.ALL)
 	private List<EtudiantCours> listeEtudiantCours;
-	
-	
+
+	/**
+	 * > type de relataion : Many Etudiant To Many Promotion
+	 */
+	@ManyToMany
+	private List<Promotion> listePromotion;
+
 	/* ____________ Ctor ____________ */
 
 	public Etudiant() {
@@ -45,13 +55,15 @@ public class Etudiant extends Personne implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Etudiant(String motDePasse, String nom, String prenom, String email, String urlPhotoEtudiant,  Adresse adresse) {
+	public Etudiant(String motDePasse, String nom, String prenom, String email, String urlPhotoEtudiant,
+			Adresse adresse) {
 		super(motDePasse, nom, prenom, email, adresse);
 		this.urlPhotoEtudiant = urlPhotoEtudiant;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Etudiant(String motDePasse, String nom, String prenom, String email,  String urlPhotoEtudiant, Adresse adresse, Date dateNaissance) {
+	public Etudiant(String motDePasse, String nom, String prenom, String email, String urlPhotoEtudiant,
+			Adresse adresse, Date dateNaissance) {
 		super(motDePasse, nom, prenom, email, adresse);
 		this.urlPhotoEtudiant = urlPhotoEtudiant;
 		this.dateNaissance = dateNaissance;
@@ -74,14 +86,7 @@ public class Etudiant extends Personne implements Serializable {
 		this.dateNaissance = dateNaissance;
 	}
 
-//	public Etudiant(EtudiantCours etudiantCours) {
-//		super();
-//		this.etudiantCours = etudiantCours;
-//	}
-
 	/* ____________ getters/setters ____________ */
-
-	
 
 	public String getUrlPhotoEtudiant() {
 		return urlPhotoEtudiant;
@@ -99,12 +104,20 @@ public class Etudiant extends Personne implements Serializable {
 		this.dateNaissance = dateNaissance;
 	}
 
-//	public EtudiantCours getEtudiantCours() {
-//		return etudiantCours;
-//	}
-//
-//	public void setEtudiantCours(EtudiantCours etudiantCours) {
-//		this.etudiantCours = etudiantCours;
-//	}
 
+	public List<EtudiantCours> getListeEtudiantCours() {
+		return listeEtudiantCours;
+	}
+
+	public void setListeEtudiantCours(List<EtudiantCours> listeEtudiantCours) {
+		this.listeEtudiantCours = listeEtudiantCours;
+	}
+
+	public List<Promotion> getListePromotion() {
+		return listePromotion;
+	}
+
+	public void setListePromotion(List<Promotion> listePromotion) {
+		this.listePromotion = listePromotion;
+	}
 }// Fin de la classe Etudiant

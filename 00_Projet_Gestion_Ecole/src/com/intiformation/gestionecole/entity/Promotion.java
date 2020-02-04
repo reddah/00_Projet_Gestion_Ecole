@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "promotion")
@@ -48,6 +49,17 @@ public class Promotion implements Serializable {
 			   inverseJoinColumns=@JoinColumn(name="ENSEIGNANT_ID"))
 	private List<Enseignant> listeEnseignant;
 	
+	/**
+	 * > type de relataion : Many Promotion To Many Etudiant
+	 */
+	@ManyToMany(mappedBy = "listePromotion", targetEntity = Etudiant.class, cascade = CascadeType.ALL)
+	private List<Etudiant> listeEtudiant;
+	
+	/**
+	 * > type de relataion : One Promotion To Many Cours
+	 */
+	@OneToMany(mappedBy = "promotion", targetEntity = Cours.class, cascade = CascadeType.ALL)
+	private List<Cours> listCours;
 	
 	/* ===================Ctors===================== */
 	public Promotion() {
@@ -85,6 +97,22 @@ public class Promotion implements Serializable {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public List<Matiere> getListeMatiere() {
+		return listeMatiere;
+	}
+
+	public void setListeMatiere(List<Matiere> listeMatiere) {
+		this.listeMatiere = listeMatiere;
+	}
+
+	public List<Enseignant> getListeEnseignant() {
+		return listeEnseignant;
+	}
+
+	public void setListeEnseignant(List<Enseignant> listeEnseignant) {
+		this.listeEnseignant = listeEnseignant;
 	}
 
 } // fin de la méthode Promotion

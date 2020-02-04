@@ -25,6 +25,11 @@ public class EtudiantCours implements Serializable {
 	private boolean absence;
 	private String motif;
 
+	
+	/* -------------------------------------------------*/
+	/* ----------------- Association -------------------*/
+	/* -------------------------------------------------*/
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "COURS_ID", referencedColumnName = "id_Cours")
 	private Cours cours;

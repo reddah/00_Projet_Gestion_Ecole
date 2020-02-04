@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,8 +35,23 @@ public class Cours implements Serializable {
 	private String description;
 
 	@OneToMany(mappedBy = "cours", targetEntity = EtudiantCours.class, cascade = CascadeType.ALL)
-	private List<Cours> listeCours;
+	private List<EtudiantCours> listeEtudiantCours;
+	
+	
+	/**
+	 * > type de relataion : Many Cours To One Matiere 
+	 */
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "MATIERE_ID", referencedColumnName = "id_Matiere")
+	private Matiere matiere;
 
+	
+	/**
+	 * > type de relataion : Many Cours To One Matiere 
+	 */
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PROMOTION_ID", referencedColumnName = "id_Promotion")
+	private Promotion promotion;
 	/* ===================Ctors===================== */
 	public Cours() {
 		super();
@@ -108,12 +125,22 @@ public class Cours implements Serializable {
 		this.description = description;
 	}
 
-	public List<Cours> getListeCours() {
-		return listeCours;
+	public List<EtudiantCours> getListeEtudiantCours() {
+		return listeEtudiantCours;
 	}
 
-	public void setListeCours(List<Cours> listeCours) {
-		this.listeCours = listeCours;
+	public void setListeEtudiantCours(List<EtudiantCours> listeEtudiantCours) {
+		this.listeEtudiantCours = listeEtudiantCours;
 	}
+
+	public Matiere getMatiere() {
+		return matiere;
+	}
+
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
+	}
+
+
 
 }// fin de la classe Cours

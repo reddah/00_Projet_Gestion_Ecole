@@ -13,7 +13,6 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
 @MappedSuperclass
-//@Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne implements Serializable {
 	/* ____________ Props ____________ */
@@ -25,7 +24,9 @@ public abstract class Personne implements Serializable {
 	protected String prenom;
 	protected String email;
 
-
+	/* -------------------------------------------------*/
+	/* ----------------- Association -------------------*/
+	/* -------------------------------------------------*/
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADRESSE_ID", // Nom de la FK
 			referencedColumnName = "id_Adresse" // Nom de la colonne de la classe associée
