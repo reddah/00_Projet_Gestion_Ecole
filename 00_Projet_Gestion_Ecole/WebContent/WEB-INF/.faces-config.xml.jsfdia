@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listEtudiants::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    TITLE="listEtudiants" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editEtudiant::#edit_etudiant.xhtml"
+    NAME="output1" PATH="/edit_etudiant.xhtml"
+    TARGET="rules:#edit_etudiant.xhtml" TITLE="editEtudiant" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addEtudiant::#ajouter_etudiant.xhtml"
+    NAME="output2" PATH="/ajouter_etudiant.xhtml"
+    TARGET="rules:#ajouter_etudiant.xhtml" TITLE="addEtudiant" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#edit_etudiant.xhtml"
+  PATH="/edit_etudiant.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#edit_etudiant.xhtml:0" NAME="item"
+   PATH="/edit_etudiant.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listEtudiants::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    TITLE="listEtudiants" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ajouter_etudiant.xhtml"
+  PATH="/ajouter_etudiant.xhtml" SHAPE="64,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ajouter_etudiant.xhtml:0" NAME="item"
+   PATH="/ajouter_etudiant.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listEtudiants::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    TITLE="listEtudiants" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

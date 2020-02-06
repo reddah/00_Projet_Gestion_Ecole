@@ -53,6 +53,15 @@ public class EtudiantCours implements Serializable {
 		this.etudiant = etudiant;
 	}
 
+	
+	public EtudiantCours(boolean absence, String motif, Cours cours, Etudiant etudiant) {
+		super();
+		this.absence = absence;
+		this.motif = motif;
+		this.cours = cours;
+		this.etudiant = etudiant;
+	}
+
 	public EtudiantCours(boolean absence, String motif) {
 		super();
 		this.absence = absence;

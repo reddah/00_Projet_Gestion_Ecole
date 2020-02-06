@@ -12,7 +12,7 @@ public class AppTestEtudiant {
 		/*==============================================================*/
 		
 		// etudiant à ajouter
-		Etudiant etudiant = new Etudiant("mdp123","Etudiant1Nom","Etudian1Prenom","etudiant1@etudiant.com","urlPhoto1");
+		Etudiant etudiant = new Etudiant("mdp123","Etudiant4Nom","Etudian4Prenom","etudiant4@etudiant.com","urlPhoto1");
 
 		// DAO
 		EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();

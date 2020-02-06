@@ -52,7 +52,8 @@ public class Promotion implements Serializable {
 	/**
 	 * > type de relataion : Many Promotion To Many Etudiant
 	 */
-	@ManyToMany(mappedBy = "listePromotion", targetEntity = Etudiant.class, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(joinColumns=@JoinColumn(name="PROMOTION_ID"), inverseJoinColumns=@JoinColumn(name="ETUDIANT_ID"))
 	private List<Etudiant> listeEtudiant;
 	
 	/**

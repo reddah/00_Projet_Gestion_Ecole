@@ -90,6 +90,8 @@ public class EtudiantDaoImpl implements IGestionDao<Etudiant>{
 				etudiantUpdate.setNom(pEtudiant.getNom());
 				etudiantUpdate.setPrenom(pEtudiant.getPrenom());
 				etudiantUpdate.setEmail(pEtudiant.getEmail());
+				etudiantUpdate.setDateNaissance(pEtudiant.getDateNaissance());
+				etudiantUpdate.setUrlPhotoEtudiant(pEtudiant.getUrlPhotoEtudiant());
 				// 5. modif de l'etudiant dans la bdd via la méthode update()
 				entityManager.merge(etudiantUpdate);
 				// 6. validation de la transaction avec commit()

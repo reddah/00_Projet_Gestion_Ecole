@@ -40,7 +40,7 @@ public class Etudiant extends Personne implements Serializable {
 	/**
 	 * > type de relataion : Many Etudiant To Many Promotion
 	 */
-	@ManyToMany
+	@ManyToMany(mappedBy = "listeEtudiant", targetEntity = Promotion.class, cascade = CascadeType.ALL)
 	private List<Promotion> listePromotion;
 
 	/* ____________ Ctor ____________ */
@@ -52,6 +52,11 @@ public class Etudiant extends Personne implements Serializable {
 
 	public Etudiant(int identifiant, String motDePasse, String nom, String prenom, String email) {
 		super(identifiant, motDePasse, nom, prenom, email);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Etudiant(String motDePasse, String nom, String prenom, String email) {
+		super(motDePasse, nom, prenom, email);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -120,4 +125,7 @@ public class Etudiant extends Personne implements Serializable {
 	public void setListePromotion(List<Promotion> listePromotion) {
 		this.listePromotion = listePromotion;
 	}
+	
+	
+	
 }// Fin de la classe Etudiant
