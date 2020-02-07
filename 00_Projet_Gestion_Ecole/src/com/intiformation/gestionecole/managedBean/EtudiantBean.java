@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +30,10 @@ public class EtudiantBean implements Serializable {
 	/* _____________________________ CHAMPS __________________________________ */
 	private Collection<Etudiant> etudiants;
 	private Etudiant etudiant = new Etudiant();
+	private List<Etudiant> etudiants2;
+	private List<Etudiant> listeEtudiants;
+
+
 
 	// Chargement du fichier de l'API servlete
 	private Part uploadedFile;
@@ -68,6 +74,10 @@ public class EtudiantBean implements Serializable {
 		etudiantDao.ajouter(etudiant);
 	}
 
+	public void modifierEtudiant(ActionEvent event) {
+		
+		etudiantDao.modifier(etudiant.getIdentifiant(), etudiant);
+	}
 	/**
 	 * 
 	 * @param event
@@ -220,8 +230,34 @@ public class EtudiantBean implements Serializable {
 		} // Fin du if ajout Etudiant
 
 	}// Fin de la méthode saveEtudiant
+	
+	
 
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        int filterInt = getInteger(filterText);
+ 
+        Etudiant etudiant = (Etudiant) value;
+        return etudiant.getEmail().toLowerCase().contains(filterText)
+                || etudiant.getNom().toLowerCase().contains(filterText)
+                || etudiant.getPrenom().toLowerCase().contains(filterText)
+                || etudiant.getIdentifiant() < filterInt;
+    }
+    
+    private int getInteger(String string) {
+        try {
+            return Integer.valueOf(string);
+        }
+        catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
+    
 	/* _______________________ GETTERS/SETTERS ________________________________ */
+
 
 	public void setEtudiants(Collection<Etudiant> etudiants) {
 		this.etudiants = etudiants;
@@ -251,4 +287,20 @@ public class EtudiantBean implements Serializable {
 		this.uploadedFile = uploadedFile;
 	}
 
+	public List<Etudiant> getListeEtudiants() {
+		return listeEtudiants;
+	}
+
+	public void setListeEtudiants(List<Etudiant> listeEtudiants) {
+		this.listeEtudiants = listeEtudiants;
+	}
+
+	public List<Etudiant> getEtudiants2() {
+		return etudiants2;
+	}
+
+	public void setEtudiants2(List<Etudiant> etudiants2) {
+		this.etudiants2 = etudiants2;
+	}
+	
 }// Fin de la classe EtudiantBean

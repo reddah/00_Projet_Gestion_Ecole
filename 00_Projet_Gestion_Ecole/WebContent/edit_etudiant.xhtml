@@ -31,11 +31,15 @@
 			<h:outputLabel value="Email : " />
 			<h:inputText value="#{etudiantBean.etudiant.email}" />
 			
-			
+		 
 			<p:outputLabel for="germanV2" value="German (other Pattern):" />
        	 	<p:calendar id="germanV2" value="#{etudiantBean.etudiant.dateNaissance}" locale="de" navigator="true" pattern="dd.MM.yyyy" />
-        
-
+       	
+       	<!-- 	
+       	    <p:outputLabel for="german" value="German:" />
+        	<p:datePicker id="german" value="#{etudiantBean.etudiant.dateNaissance}" locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
+		 -->	
+			
 			<h:outputLabel value="Photo : " />
 			<h:panelGroup>
 				<h:graphicImage
