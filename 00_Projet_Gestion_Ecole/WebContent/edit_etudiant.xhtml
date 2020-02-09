@@ -11,10 +11,6 @@
 	<script type="text/javascript" src="resources/scripts/script.js"></script>
 </h:head>
 <h:body>
-
-	<!-- Affichage des messages -->
-	<h:messages style="color:red;"
-		fatalStyle="color:red; font-size:larger;" />
 		
 	<h:form enctype="multipart/form-data">
 
@@ -33,12 +29,7 @@
 			
 		 
 			<p:outputLabel for="germanV2" value="German (other Pattern):" />
-       	 	<p:calendar id="germanV2" value="#{etudiantBean.etudiant.dateNaissance}" locale="de" navigator="true" pattern="dd.MM.yyyy" />
-       	
-       	<!-- 	
-       	    <p:outputLabel for="german" value="German:" />
-        	<p:datePicker id="german" value="#{etudiantBean.etudiant.dateNaissance}" locale="de" monthNavigator="true" pattern="dd.MM.yyyy"/>
-		 -->	
+       	 	<p:calendar id="germanV2" value="#{etudiantBean.etudiant.dateNaissance}" locale="de" navigator="true" pattern="dd.MM.yyyy" />	
 			
 			<h:outputLabel value="Photo : " />
 			<h:panelGroup>

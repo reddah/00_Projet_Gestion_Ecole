@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+      xmlns:p="http://primefaces.org/ui">
+
+<!-- 	<ui:composition template=""> -->
+<!-- 	</ui:composition> -->
+
+<h:head>
+									<style type="text/css">
+.label, .value {
+	vertical-align: top
+}
+
+.output {
+	font-weight: bold
+}
+</style>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+
+	<!-- 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="bureau.css" />
+	<!-- 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="bootstrap.css" />
+	<!-- 	<link rel="stylesheet" href="style.css" type="text/css" /> -->
+	<h:outputStylesheet library="resources" name="style.css" />
+	<!-- 	<link rel="stylesheet" href="css/dark.css" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="dark.css" />
+	<!-- 	<link rel="stylesheet" href="css/font-icons.css" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="font-icons.css" />
+	<!-- 	<link rel="stylesheet" href="css/animate.css" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="animatee.css" />
+	<!-- 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" /> -->
+	<h:outputStylesheet library="assets/css" name="magnific-popup.css" />
+
+	<!-- 	<link rel="stylesheet" href="css/responsive.css" type="text/css" /> -->
+	<h:outputStylesheet library="css" name="responsive.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Login - Layout 5 | Canvas</title>
+</h:head>
+
+<h:body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+		<div class="content-wrap nopadding">
+
+			<div class="section nopadding nomargin"
+				style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('resources/assets/images/7.jpg') center center no-repeat; background-size: cover;"></div>
+
+			<div class="section nobg full-screen nopadding nomargin">
+				<div class="container-fluid vertical-middle divcenter clearfix">
+
+					<div class="center">
+						<a href="index.html"><img
+							src="resources/assets/images/logo-dark.png" alt="Canvas Logo" /></a>
+					</div>
+
+					<div class="card divcenter noradius noborder"
+						style="max-width: 400px; background-color: rgba(255, 255, 255, 0.93);">
+						<div class="card-body" style="padding: 40px;">
+							<h:form id="login-form" name="login-form" class="nobottommargin"
+								action="#" method="post">
+								<h3>Connexion à votre espace</h3>
+
+								<div class="col_full">
+<!-- 									<label for="login-form-username">Vous êtes:</label> <select -->
+<!-- 										name="pTypeDeCompte" id="le type"> -->
+<!-- 										<option value="1" class="form-control not-dark">Etudiant -->
+<!-- 										</option> -->
+<!-- 										<option value="2" class="form-control not-dark">Enseignant -->
+<!-- 										</option> -->
+<!-- 										<option value="3" class="form-control not-dark">Administrateur -->
+<!-- 										</option> -->
+
+<!-- 									</select> -->
+									
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+        <p:outputLabel for="basic" value="Vous êtes:" />
+        <p:selectOneListbox id="basic" value="#{selectOneView.option}">
+            <f:selectItem itemLabel="Etudiant" itemValue="1" />
+            <f:selectItem itemLabel="Enseignant" itemValue="2" />
+            <f:selectItem itemLabel="Administrateur" itemValue="3" />
+        </p:selectOneListbox>
+        </h:panelGrid>
+        
+								</div>
+
+
+								<div class="col_full">
+<!-- 									<label for="login-form-username">Nom d'utilisateur:</label> <input -->
+<!-- 										type="text" id="login-form-username" -->
+<!-- 										name="login-form-username" value="" -->
+<!-- 										class="form-control not-dark" /> -->
+									<h:outputLabel  value="Identifiant" />
+									<h:inputText class="form-control not-dark" id="userID" required="true"
+										requiredMessage="Identifiant obligatoire"
+										value="#{authentificationBean.identifiant}" />
+									<h:message for="userID" styleClasse="error" />
+								</div>
+
+								<div class="col_full">
+<!-- 									<label for="login-form-password">Mot de Passe:</label> <input -->
+<!-- 										type="password" id="login-form-password" -->
+<!-- 										name="login-form-password" value="" -->
+<!-- 										class="form-control not-dark" /> -->
+									<h:outputLabel value="Mot de passe" />
+									<h:inputSecret class="form-control not-dark" id="mdpID" required="true"
+										requiredMessage="mot de passe obligatoire"
+										value="#{authentificationBean.motdePasse}" />
+									<h:message for="mdpID" styleClasse="error" />
+								</div>
+
+								<div class="col_full nobottommargin">
+<!-- 									<button class="button button-3d button-black nomargin" -->
+<!-- 										id="login-form-submit" name="login-form-submit" value="login">Se -->
+<!-- 										connecter</button> -->
+									<a href="#" class="fright">Mot de passe oublié?</a>
+									<h:commandButton  value="Se Connecter" class="button button-3d button-black nomargin"
+											action="#{authentificationBean.connecterUtilisateur()}"/>
+								</div>
+							</h:form>
+
+							<div class="line line-sm"></div>
+
+
+						</div>
+					</div>
+
+					<div class="center dark">
+						<small>Copyrights &copy; All Rights Reserved by Canvas
+							Inc.</small>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		</section>
+		<!-- #content end -->
+
+	</div>
+	<!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="resources/assets/js/jquery.js"></script>
+	<script src="resources/assets/js/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="resources/assets/js/functions.js"></script>
+
+</h:body>
+
+
+</html>

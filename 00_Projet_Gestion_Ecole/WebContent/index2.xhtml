@@ -74,6 +74,97 @@
         </p:column>
     </p:dataTable>
 </h:form>    
+        <br/><br/><br/>
+<div class="tabEtudiant">
+	
+<h:form>
+    <p:dataTable var="etudiant" value="#{etudiantBean.etudiants}" widgetVar="tabEtudiant"
+                 emptyMessage="Aucun résultat" filteredValue="#{etudiantBean.listeEtudiants}"
+                 globalFilterFunction="#{etudiantBean.globalFilterFunction}" rows="5"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">>
+ 
+ 		<p:growl id="msgs" showDetail="true" />
+			
+        <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields using globalFilterFunction:" />
+                <p:inputText id="globalFilter" onkeyup="PF('tabEtudiant').filter()" style="width:150px" placeholder="Enter keyword">
+                 <f:converter converterId="javax.faces.Integer" /></p:inputText>
+            </p:outputPanel>
+        </f:facet>
+ 			<p:column headerText="Photo">
+				<h:graphicImage library="images" name="#{etudiant.urlPhotoEtudiant}" width="100" height="100" />
+			</p:column>
+
+        <p:column filterBy="#{etudiant.identifiant}" headerText="identifiant" >
+            <f:facet name="filter">
+                <p:inputText onchange="PF('tabEtudiant').filter()" class="champ"></p:inputText>
+            </f:facet>
+            <h:outputText value="#{etudiant.identifiant}" />
+        </p:column>			
+			
+		<p:column filterBy="#{etudiant.nom}" headerText="nom" >
+            <f:facet name="filter">
+                <p:inputText onchange="PF('tabEtudiant').filter()" class="champ"></p:inputText>
+            </f:facet>
+            <h:outputText value="#{etudiant.nom}" />
+        </p:column>
+
+			<p:column headerText="Prenom">
+				<h:outputText value="#{etudiant.prenom}" />
+			</p:column>
+			
+			<p:column headerText="Date de naissance">
+				<h:outputText value="#{etudiant.dateNaissance}"><f:convertDateTime pattern="dd MMM yyyy" /></h:outputText>
+			</p:column>
+			
+			<p:column headerText="Email">
+				<h:outputText value="#{etudiant.email}" />
+			</p:column>
+
+			<!-- colonne pour supprimer un etudiant  -->
+			<p:column headerText="supprimer">
+				<!-- lien hypertext -->
+				<!--
+                        > action="listEtudiants" : clé d'outcom pour la navigation 
+                    -->
+				<h:commandLink id="delete" action="listEtudiants" actionListener="#{etudiantBean.deleteEtudiant}">
+					<!-- passage de param au composant -->
+					<f:param id="deleteEtudiantID" name="id" value="#{etudiant.identifiant}" />
+					<!-- texte du lien -->
+					<h:outputText value="supprimer" />
+				</h:commandLink>
+
+			</p:column>
+
+			<!-- colonne pour modifier un etudiant  -->
+			<!--
+                    > clé d'outcom = editEtudiant
+                    > méthode à invoquer = selectEtudiant()
+                    > paramètre : editEtudiantID
+                -->
+			<p:column headerText="modifier">
+				<h:commandLink id="update" action="editEtudiant"
+					actionListener="#{etudiantBean.selectEtudiant}">
+					<!-- passage de param au composant -->
+					<f:param id="editEtudiantID" name="id" value="#{etudiant.identifiant}" />
+					<!-- texte du lien -->
+					<h:outputText value="éditer" />
+				</h:commandLink>
+			</p:column>
+			
+						<f:facet name="paginatorTopLeft">
+				<p:commandButton type="button" icon="pi pi-refresh" />
+			</f:facet>
+
+			<f:facet name="paginatorBottomRight">
+				<p:commandButton type="button" icon="pi pi-cloud-upload" />
+			</f:facet>
+    </p:dataTable>
+</h:form>
+</div>
     
     <br/><br/><br/>
     

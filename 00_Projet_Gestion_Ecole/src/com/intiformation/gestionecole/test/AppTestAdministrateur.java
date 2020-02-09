@@ -18,7 +18,7 @@ public class AppTestAdministrateur {
 		adresse = adresseDaoImpl.getById(1);
 		
 		// administrateur à ajouter
-		Administrateur administrateur = new Administrateur("mdp123", "AdminNom", "AdminPrenom", "admin@admin.com", adresse);
+		Administrateur administrateur = new Administrateur("mdp123", "DAHMANI", "Redouane", "red@admin.com", adresse);
 
 		// DAO Administrateur
 		AdministrateurDaoImpl administrateurDao = new AdministrateurDaoImpl();

@@ -115,7 +115,7 @@ public class EtudiantBean implements Serializable {
 			// --> envoie d'un message vers la vue avce la classe FacesMessage
 			context = FacesContext.getCurrentInstance();
 			// Définition du message
-			FacesMessage messageDelete = new FacesMessage("L'etudiant à été supprimer avec succès");
+			FacesMessage messageDelete = new FacesMessage("Infos :","L'etudiant à été supprimer avec succès");
 
 			// envoie du message vers la vue
 			// -> null : message global pour toute la page
@@ -131,16 +131,17 @@ public class EtudiantBean implements Serializable {
 	}// Fin de la méthode deleteEtudiant
 
 	public void saveEtudiant() {
+		// traitement du fileUpload : recup du nom de l'image
+		String fileName = uploadedFile.getSubmittedFileName();
+		// affectation du nom à la prop urlPhotoEtudiant de l'Etudiant
+		etudiant.setUrlPhotoEtudiant(fileName);
+		// ajout de l'Etudiant dans la bdd
 		if (etudiant.getIdentifiant() == 0) {
 			try {
 				/* ************************************************************* */
 				/* ***************** Cas : ajout d'un etudiant ***************** */
 				/* ************************************************************* */
-				// traitement du fileUpload : recup du nom de l'image
-				String fileName = uploadedFile.getSubmittedFileName();
-				// affectation du nom à la prop urlPhotoEtudiant de l'Etudiant
-				etudiant.setUrlPhotoEtudiant(fileName);
-				// ajout de l'Etudiant dans la bdd
+
 
 				FacesContext context = null;
 				if (etudiantDao.ajouter(etudiant)) {
@@ -148,7 +149,7 @@ public class EtudiantBean implements Serializable {
 					// --> envoie d'un message vers la vue avce la classe FacesMessage
 					context = FacesContext.getCurrentInstance();
 					// Définition du message
-					FacesMessage messageAdd = new FacesMessage("L'etudiant à été ajouté avec succès");
+					FacesMessage messageAdd = new FacesMessage("Infos :","L'etudiant à été ajouté avec succès");
 
 					// envoie du message vers la vue
 					// -> null : message global pour toute la page
