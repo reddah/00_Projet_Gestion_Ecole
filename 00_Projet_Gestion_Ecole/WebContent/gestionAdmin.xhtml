@@ -19,6 +19,10 @@
 	<h:outputStylesheet library="assets/css"
 		name="perfect-scrollbar.min.css" />
 	<h:outputStylesheet library="assets/css" name="datatables.min.css" />
+	<h:outputStylesheet library="assets/css" name="bootstrap.min.css" />
+	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />    
+	
 </h:head>
 
 <h:body class="text-left">
@@ -246,7 +250,7 @@
 														<!-- passage de param au composant -->
 														<f:param id="editEtudiantID" name="id" value="#{etudiant.identifiant}" />
 														<!-- texte du lien -->
-														<img src="resources/assets/images/editer2.jpg" width="50px" height="50px"/>
+														<i class="fa fa-folder"></i>
 													</h:commandLink>
 												</p:column>
 												
@@ -262,7 +266,7 @@
 														<!-- passage de param au composant -->
 														<f:param id="deleteEtudiantID" name="id" value="#{etudiant.identifiant}" />
 														<!-- texte du lien -->
-														<img src="resources/assets/images/supp2.png" width="50px" height="50px"/>
+   														<i class="fa fa-trash"></i>
 													</h:commandLink>
 
 												</p:column>
@@ -374,7 +378,7 @@
 															<f:param id="editAdministrateurID" name="id"
 																value="#{administrateur.identifiant}" />
 															<!-- texte du lien -->
-															<img src="resources/assets/images/editer2.jpg" width="50px" height="50px"/>
+															<i class="fa fa-folder"></i>
 														</h:commandLink>
 													</p:column>
 													
@@ -391,7 +395,7 @@
 															<f:param id="deleteAdministrateurID" name="id"
 																value="#{administrateur.identifiant}" />
 															<!-- texte du lien -->
-															<img src="resources/assets/images/supp2.png" width="50px" height="50px"/>
+															<i class="fa fa-trash"></i>
 														</h:commandLink>
 													</p:column>
 
@@ -505,7 +509,7 @@
 																<f:param id="editEnseignantID" name="id"
 																	value="#{enseignant.identifiant}" />
 																<!-- texte du lien -->
-																<img src="resources/assets/images/editer2.jpg" width="50px" height="50px"/>
+																<i class="fa fa-folder"></i>
 															</h:commandLink>
 														</p:column>
 														
@@ -521,7 +525,7 @@
 																<f:param id="deleteEnseignantID" name="id"
 																	value="#{enseignant.identifiant}" />
 																<!-- texte du lien -->
-																<img src="resources/assets/images/supp2.png" width="50px" height="50px"/>
+																<i class="fa fa-trash"></i>
 															</h:commandLink>
 														</p:column>
 
