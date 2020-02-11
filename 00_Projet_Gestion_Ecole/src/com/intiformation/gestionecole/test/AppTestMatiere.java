@@ -13,16 +13,14 @@ public class AppTestMatiere {
 		/*==============================================================*/
 		
 		// matiere à ajouter
-		Matiere matiere = new Matiere("matiere 1");
-
-		System.out.println("Main AppTestMatiere : 2");
+		Matiere matiere = new Matiere("Francais");
+		Matiere matiere2 = new Matiere("Maths");
+		Matiere matiere3 = new Matiere("JavaSE");
 		// DAO
 		MatiereDaoImpl matiereDao = new MatiereDaoImpl();
-		System.out.println("Main AppTestMatiere : 3");
 		
 		// Ajout
 		matiereDao.ajouter(matiere);
-		System.out.println("Main AppTestMatiere : 4");
 		
 		// Affichage
 		System.out.println("Ajout des matieres : ++++++++++++++++++++++++++++++++++++");
@@ -50,7 +48,7 @@ public class AppTestMatiere {
 		
 		System.out.println("UPDATE +++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		matiere = new Matiere("matiere 2");
-		matiereDao.modifier(1, matiere);
+		//matiereDao.modifier(1, matiere);
 		System.out.println("\t > Aprés update : ");
 		Matiere matiere1 = matiereDao.getById(1);
 		System.out.println("\t\t > id = : " + matiere1.toString());
@@ -69,8 +67,8 @@ public class AppTestMatiere {
 		/* ============================================================== */
 		
 		System.out.println("Get All Matieres ===================================");	
-		for (Matiere matiere2 : matiereDao.getAll()) {
-			System.out.println("\t > " + matiere2.toString());
+		for (Matiere matiere4 : matiereDao.getAll()) {
+			System.out.println("\t > " + matiere4.toString());
 		}
 		
 		System.out.println("===================================================================\n");

@@ -1,44 +1,273 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
 	xmlns:p="http://primefaces.org/ui">
+
+<!-- 	<ui:composition template=""> -->
+<!-- 	</ui:composition> -->
+
 <h:head>
-	<title>edit_enseignant.xhtml</title>
-	<h:outputStylesheet library="styles" name="style.css" />
-	<script type="text/javascript" src="resources/scripts/script.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>edit enseignant</title>
+	<h:outputStylesheet library="assets/css" name="bureau2.css" />
+	<h:outputStylesheet library="assets/css" name="lite-purple.min.css" />
+	<h:outputStylesheet library="assets/css"
+		name="perfect-scrollbar.min.css" />
+	<h:outputStylesheet library="assets/css" name="datatables.min.css" />
 </h:head>
-<h:body>
-		
-	<h:form enctype="multipart/form-data">
 
-		<h:inputHidden value="#{enseignantBean.enseignant.identifiant}" />
+<h:body class="text-left">
+	<div class="app-admin-wrap layout-sidebar-large">
+		<div class="main-header">
+			<div class="logo">
+				<img src="resources/assets/images/logo.png" alt="" />
+			</div>
+			<div class="menu-toggle">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="d-flex align-items-center">
+				<!-- Mega menu -->
 
-		<h:panelGrid columns="2" border="1">
-			
-			<h:outputLabel value="Nom : " />
-			<h:inputText value="#{enseignantBean.enseignant.nom}" />
+				<!-- / Mega menu -->
 
-			<h:outputLabel value="Prenom : " />
-			<h:inputText value="#{enseignantBean.enseignant.prenom}" />
+				<!-- Notificaiton -->
 
-			<h:outputLabel value="Email : " />
-			<h:inputText value="#{enseignantBean.enseignant.email}" />
+				<!-- Notification dropdown -->
 
-			<h:outputLabel value="Mot ed passe : " />
-			<h:inputText value="#{enseignantBean.enseignant.motDePasse}" />
-			
-			<f:facet name="footer">
-				<h:commandButton value="save" action="listEnseignants"
-					actionListener="#{enseignantBean.saveEnseignant}" />
-			</f:facet>
 
-		</h:panelGrid>
+				<!-- Notificaiton End -->
+				<!-- User avatar dropdown -->
 
-	</h:form>
+			</div>
+		</div>
+		<div class="side-content-wrap">
+			<div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar=""
+				data-suppress-scroll-x="true">
+				<ul class="navigation-left">
+					<li class="nav-item" data-item="dashboard"><a
+						class="nav-item-hold" href="gestionAdmin.xhtml"><i
+							class="nav-icon i-Bar-Chart"></i><span class="nav-text">Gestion
+								Du Personnel</span></a>
+						<div class="triangle"></div></li>
+					<li class="nav-item" data-item="uikits"><a
+						class="nav-item-hold" href="#"><i class="nav-icon i-Library"></i><span
+							class="nav-text">Gestion Des Matières</span></a>
+						<div class="triangle"></div></li>
+					<li class="nav-item" data-item="extrakits"><a
+						class="nav-item-hold" href="#"><i class="nav-icon i-Suitcase"></i><span
+							class="nav-text">Gestion Des Promotions</span></a>
+						<div class="triangle"></div></li>
+					<li class="nav-item" data-item="apps"><a class="nav-item-hold"
+						href="#"><i class="nav-icon i-Computer-Secure"></i><span
+							class="nav-text">Gestion Des Cours</span></a>
+						<div class="triangle"></div></li>
+					<li class="nav-item" data-item="widgets"><a
+						class="nav-item-hold" href="#"><i
+							class="nav-icon i-Computer-Secure"></i><span class="nav-text">Gestion
+								des Absences</span></a>
+						<div class="triangle"></div></li>
 
+				</ul>
+			</div>
+			<div class="sidebar-left-secondary rtl-ps-none"
+				data-perfect-scrollbar="" data-suppress-scroll-x="true">
+				<!-- Submenu Dashboards-->
+				<ul class="childNav" data-parent="dashboard">
+					<li class="nav-item"><a href="gestionAdmin.xhtml"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Espace
+								Administrateur</span></a></li>
+					<li class="nav-item"><a href="dashboard2.html"><i
+							class="nav-icon i-Clock-4"></i><span class="item-name">Espace
+								Enseignant</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Espace
+								Etudiant</span></a></li>
+
+				</ul>
+				<ul class="childNav" data-parent="uikits">
+					<li class="nav-item"><a href="listeDesMatieres.xhtml"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Liste
+								des matières</span></a></li>
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Ajouter
+								une matières</span></a></li>
+					<li class="nav-item"><a href="dashboard2.html"><i
+							class="nav-icon i-Clock-4"></i><span class="item-name">Modifier
+								une matière</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Supprimer
+								une matière</span></a></li>
+
+				</ul>
+				<ul class="childNav" data-parent="extrakits">
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Liste
+								des promotions</span></a></li>
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Ajouter
+								une promotions</span></a></li>
+					<li class="nav-item"><a href="dashboard2.html"><i
+							class="nav-icon i-Clock-4"></i><span class="item-name">Modifier
+								une promotions</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Supprimer
+								une promotions</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Affecter
+								un étudiant à une promotion</span></a></li>
+
+				</ul>
+				<ul class="childNav" data-parent="apps">
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Liste
+								des cours</span></a></li>
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Ajouter
+								une cours</span></a></li>
+					<li class="nav-item"><a href="dashboard2.html"><i
+							class="nav-icon i-Clock-4"></i><span class="item-name">Modifier
+								une cours</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Supprimer
+								une cours</span></a></li>
+					<li class="nav-item"><a href="dashboard3.html"><i
+							class="nav-icon i-Over-Time"></i><span class="item-name">Affecter
+								un cours à une matière</span></a></li>
+				</ul>
+				<ul class="childNav" data-parent="widgets">
+					<li class="nav-item"><a href="dashboard1.html"><i
+							class="nav-icon i-Clock-3"></i><span class="item-name">Liste
+								des étudiants absents</span></a></li>
+					<li class="nav-item"><a href="dashboard2.html"><i
+							class="nav-icon i-Clock-4"></i><span class="item-name">Modifier
+								liste des étudiants absents</span></a></li>
+
+
+				</ul>
+
+
+				<!-- chartjs-->
+
+
+
+
+			</div>
+			<div class="sidebar-overlay"></div>
+		</div>
+		<!-- =============== Left side End ================-->
+		<div class="main-content-wrap sidenav-open d-flex flex-column">
+			<!-- ============ Body content start ============= -->
+
+			<div class="main-content">
+				<div class="breadcrumb">
+					<h1>Tableau de bord</h1>
+
+				</div>
+				<div class="breadcrumb"></div>
+				<div class="separator-breadcrumb border-top"></div>
+				<div class="row mb-4"></div>
+				<!-- end of row-->
+				<div class="row mb-4">
+					<div class="col-md-12 mb-4">
+						<div class="card text-left">
+							<div class="card-body">
+								<h4 class="card-title mb-3">Enseignant</h4>
+								<p>DataTables has most features enabled by default, so all
+									you need to do to use it with your own ables is to call the
+									construction function: $().DataTable();.</p>
+								<div class="table-responsive">
+									<div class="tabEtudiant">
+										<h:form enctype="multipart/form-data">
+
+											<h:inputHidden
+												value="#{enseignantBean.enseignant.identifiant}" />
+
+											<h:panelGrid columns="2">
+
+												<p:outputLabel value="Nom : " />
+												<p:inputText value="#{enseignantBean.enseignant.nom}" />
+
+												<p:outputLabel value="Prenom : " />
+												<p:inputText value="#{enseignantBean.enseignant.prenom}" />
+
+												<p:outputLabel value="Email : " />
+												<p:inputText value="#{enseignantBean.enseignant.email}" />
+
+												<p:outputLabel value="Mot de passe : " />
+												<p:inputText value="#{enseignantBean.enseignant.motDePasse}" />
+												<br/>
+												<f:facet name="footer">
+													<p:commandButton value="Enregistrer" action="listEnseignants"
+														actionListener="#{enseignantBean.saveEnseignant}" />
+												</f:facet>
+
+											</h:panelGrid>
+
+										</h:form>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end of col-->
+				</div>
+
+				<!-- end of row-->
+				<!-- end of main-content -->
+			</div>
+			<!-- Footer Start -->
+			<div class="flex-grow-1"></div>
+			<div class="app-footer">
+				<div class="row">
+					<div class="col-md-9">
+						<p>
+							<strong>Gull - Laravel + Bootstrap 4 admin template</strong>
+						</p>
+						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+							Libero quis beatae officia saepe perferendis voluptatum minima
+							eveniet voluptates dolorum, temporibus nisi maxime nesciunt totam
+							repudiandae commodi sequi dolor quibusdam</p>
+					</div>
+				</div>
+				<div
+					class="footer-bottom border-top pt-3 d-flex flex-column flex-sm-row align-items-center">
+
+					<a class="btn btn-primary text-white btn-rounded"
+						href="https://themeforest.net/item/gull-bootstrap-laravel-admin-dashboard-template/23101970"
+						target="_blank">Buy Gull HTML</a> <span class="flex-grow-1"></span>
+
+					<div class="d-flex align-items-center">
+						<img class="logo" src="resources/assets/images/logo.png" alt="" />
+						<div>
+							<p class="m-0">&copy; 2018 Gull HTML</p>
+							<p class="m-0">All rights reserved</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- fotter end -->
+		</div>
+	</div>
+
+	<!-- ============ Search UI End ============= -->
+	<script src="resources/assets/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/assets/js//perfect-scrollbar.min.js"></script>
+	<script src="resources/assets/js/script.min.js"></script>
+	<script src="resources/assets/js/sidebar.large.script.min.js"></script>
+	<script src="resources/assets/js/datatables.min.js"></script>
+	<script src="resources/assets/js/datatables.script.min.js"></script>
+	<script src="resources/assets/js/customizer.script.min.js"></script>
 </h:body>
-</html>
 
+</html>

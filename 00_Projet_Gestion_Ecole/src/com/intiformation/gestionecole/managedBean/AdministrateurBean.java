@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIParameter;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.servlet.http.Part;
 
 import com.intiformation.gestionecole.dao.AdministrateurDaoImpl;
 import com.intiformation.gestionecole.entity.Administrateur;
